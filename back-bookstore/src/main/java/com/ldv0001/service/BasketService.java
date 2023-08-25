@@ -1,5 +1,4 @@
 package com.ldv0001.service;
-
 import com.ldv0001.model.Basket;
 import com.ldv0001.model.Book;
 import com.ldv0001.repo.BasketRepository;
@@ -34,7 +33,7 @@ public class BasketService {
         else{
             counterOfTheBooks += 1;
             basketRepository.insertIntoCount(counterOfTheBooks,book.getId(),username);
-            basketRepository.insertIntoPrice(counterOfTheBooks * book.getPrice(),book.getId(),username);
+//            basketRepository.insertIntoPrice(counterOfTheBooks * book.getPrice(),book.getId(),username);
         }
     }
 

@@ -13,6 +13,14 @@ public class Book {
 
     String image;
 
+    public Book(String nameOfTheBook, String image, String description, float price, Author author) {
+        this.nameOfTheBook = nameOfTheBook;
+        this.image = image;
+        this.description = description;
+        this.price = price;
+        this.author = author;
+    }
+
     @Column(columnDefinition = "TEXT")
     String description;
 

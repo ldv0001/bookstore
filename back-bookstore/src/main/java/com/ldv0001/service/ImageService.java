@@ -16,7 +16,8 @@ public class ImageService {
     @Autowired
     BookRepository bookRepository;
     public void saveImage(MultipartFile file){
-            Path filePath = Paths.get("/app/images",file.getOriginalFilename());
+//            Path filePath = Paths.get("/app/images",file.getOriginalFilename());
+            Path filePath = Paths.get("./src/main/resources/images",file.getOriginalFilename());
 
         try {
             Files.write(filePath,file.getBytes());
@@ -28,8 +29,21 @@ public class ImageService {
     public byte[] getImage(long id) throws IOException {
         Book book = bookRepository.findById(id).get();
         String image = book.getImage();
-        Path filePath = Paths.get("/app/images/"+image);
+//        Path filePath = Paths.get("/app/images/"+image);
+        Path filePath = Paths.get("./src/main/resources/images/"+image);
         return Files.readAllBytes(filePath);
+    }
+
+    public void deleteImage(int deleteResult, String nameOfTheFile){
+//        Path path = Paths.get("/app/images/",nameOfTheFile);
+        Path path = Paths.get("./src/main/resources/images/",nameOfTheFile);
+        if(deleteResult >0) {
+            try {
+                Files.delete(path);
+            } catch (IOException e) {
+                e.printStackTrace();
+            }
+        }
     }
 
 }

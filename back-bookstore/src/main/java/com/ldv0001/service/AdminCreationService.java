@@ -12,8 +12,8 @@ public class AdminCreationService {
     UserRepository usr;
 
     public void create(){
-        int user = usr.existByRole();
-		if(user==0){
+        boolean user = usr.existByRole().isPresent();
+		if(!user){
             usr.save(new User("admin","root", Role.ADMIN));
 		}
     }

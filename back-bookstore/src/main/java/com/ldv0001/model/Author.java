@@ -24,4 +24,8 @@ public class Author {
         this.name = name;
         books.add(book);
     }
+
+    public Author(String name) {
+        this.name = name;
+    }
 }
