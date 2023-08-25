@@ -42,8 +42,8 @@ public class FirstBookCreationService {
     }
 
     void copyImage() throws IOException {
-        Path source = Paths.get("./src/main/resources/images/fb/"+image);
-        Path destination = Paths.get("./src/main/resources/images/"+image);
+        Path source = Paths.get("/app/"+image);
+        Path destination = Paths.get("/app/images/"+image);
         Files.copy(source,destination, StandardCopyOption.REPLACE_EXISTING);
     }
 }
