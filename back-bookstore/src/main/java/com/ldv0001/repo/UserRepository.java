@@ -9,7 +9,7 @@ import java.util.Optional;
 public interface UserRepository extends CrudRepository<User,Long> {
         User findByUsername(String username);
 
-        @Query("select count(u.role) from User u where u.role = 'ADMIN' ")
+        @Query("select u from User u where u.role = 'ADMIN' ")
         Optional<User> existByRole();
 
 
