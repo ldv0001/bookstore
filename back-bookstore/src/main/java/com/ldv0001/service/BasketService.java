@@ -33,7 +33,6 @@ public class BasketService {
         else{
             counterOfTheBooks += 1;
             basketRepository.insertIntoCount(counterOfTheBooks,book.getId(),username);
-//            basketRepository.insertIntoPrice(counterOfTheBooks * book.getPrice(),book.getId(),username);
         }
     }
 

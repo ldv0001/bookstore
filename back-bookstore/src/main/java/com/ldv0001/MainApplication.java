@@ -10,7 +10,6 @@ import java.io.IOException;
 
 
 @SpringBootApplication
-
 public class MainApplication {
 
 	@Autowired

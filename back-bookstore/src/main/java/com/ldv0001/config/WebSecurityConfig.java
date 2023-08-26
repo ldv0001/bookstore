@@ -23,7 +23,6 @@ import static org.springframework.security.config.http.SessionCreationPolicy.STA
 
 @Configuration
 @EnableWebSecurity
-
 public class WebSecurityConfig extends WebSecurityConfigurerAdapter {
 
     @Qualifier("userDetailsServiceImpl")

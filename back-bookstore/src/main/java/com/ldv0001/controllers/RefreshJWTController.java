@@ -31,7 +31,6 @@ public class RefreshJWTController {
 
     @GetMapping("/refresh")
     public void refreshToken(HttpServletRequest request, HttpServletResponse response){
-        System.out.println("IN REFRESH");
 
         String authHeader = request.getHeader(AUTHORIZATION);
         if(authHeader != null && authHeader.startsWith("Bearer ")){

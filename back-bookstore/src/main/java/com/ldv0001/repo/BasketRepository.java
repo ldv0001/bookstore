@@ -10,11 +10,9 @@ import org.springframework.transaction.annotation.Transactional;
 import java.util.List;
 import java.util.Optional;
 
-@Repository
+
 public interface BasketRepository extends CrudRepository<Basket, Long> {
 
-//    @Query("from Book b where b.id = ?1")
-//    Optional<Book> findBookById(Long id);
 
     @Transactional
     @Modifying
@@ -28,11 +26,6 @@ public interface BasketRepository extends CrudRepository<Basket, Long> {
     @Modifying
     @Query("update Basket  bs set bs.countOfTheBooks = ?1 where bs.book.id = ?2 and bs.username =?3 ")
     void insertIntoCount(int counter, Long id,String username);
-
-//    @Transactional
-//    @Modifying
-//    @Query("update Basket  bs set bs.price = ?1 where bs.book.id = ?2 and bs.username =?3 ")
-//    void insertIntoPrice(float price, Long id, String username);
 
     @Query("from Basket b where b.username = ?1")
     List<Basket> getBasket(String username);
