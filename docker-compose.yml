@@ -23,7 +23,7 @@ services:
       - SPRING_DATASOURCE_URL=jdbc:postgresql://postgres:5432/spring_rest
       - SPRING_DATASOURCE_USERNAME=postgres
       - SPRING_DATASOURCE_PASSWORD=root
-      - SPRING_JPA_HIBERNATE_DDL_AUTO=update
+      # - SPRING_JPA_HIBERNATE_DDL_AUTO=update
   frontend:
     build: 
       context: ./front-bookstore
@@ -32,7 +32,6 @@ services:
       - 3000:3000
     depends_on:
       - backend
-
 
      
    

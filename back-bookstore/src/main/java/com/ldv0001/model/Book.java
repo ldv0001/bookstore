@@ -21,6 +21,10 @@ public class Book {
         this.author = author;
     }
 
+    public void setId(Long id) {
+        this.id = id;
+    }
+
     @Column(columnDefinition = "TEXT")
     String description;
 
@@ -40,13 +44,13 @@ public class Book {
         return image;
     }
 
-    float price;
+    double price;
 
-    public float getPrice() {
+    public double getPrice() {
         return price;
     }
 
-    public void setPrice(float price) {
+    public void setPrice(double price) {
         this.price = price;
     }
 

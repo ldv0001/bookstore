@@ -13,28 +13,28 @@ public class Basket {
 
     String username;
 
-    int countOfTheBooks;
+    int booksCount;
 
-    float price;
+    double price;
 
     public Long getId() {
         return id;
     }
 
-    public float getPrice() {
+    public double getPrice() {
         return price;
     }
 
-    public void setPrice(float price) {
+    public void setPrice(double price) {
         this.price = price;
     }
 
-    public int getCountOfTheBooks() {
-        return countOfTheBooks;
+    public int getBooksCount() {
+        return booksCount;
     }
 
-    public void setCountOfTheBooks(int countOfTheBooks) {
-        this.countOfTheBooks = countOfTheBooks;
+    public void setBooksCount(int countOfTheBooks) {
+        this.booksCount = countOfTheBooks;
     }
 
     public String getUsername() {

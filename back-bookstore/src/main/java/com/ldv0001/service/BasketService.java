@@ -4,17 +4,22 @@ import com.ldv0001.model.Book;
 import com.ldv0001.repo.BasketRepository;
 import com.ldv0001.repo.BookRepository;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.HttpStatus;
+import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Service;
 import java.util.List;
 
 @Service
 public class BasketService {
 
-    @Autowired
-    BookRepository bookRepository;
+    final BookRepository bookRepository;
 
-    @Autowired
-    BasketRepository basketRepository;
+    final BasketRepository basketRepository;
+
+    public BasketService(BookRepository bookRepository, BasketRepository basketRepository) {
+        this.bookRepository = bookRepository;
+        this.basketRepository = basketRepository;
+    }
 
     public  void saveBook(Book bookName, String username){
         Basket basket = new Basket();
@@ -27,7 +32,7 @@ public class BasketService {
             basket.setUsername(username);
             basket.setPrice(book.getPrice());
             counterOfTheBooks += 1;
-            basket.setCountOfTheBooks(counterOfTheBooks);
+            basket.setBooksCount(counterOfTheBooks);
             basketRepository.save(basket);
         }
         else{
@@ -36,28 +41,32 @@ public class BasketService {
         }
     }
 
-    public void deletePosition(long id,String username){
+    public HttpStatus deletePosition(long id, String username){
        List<Basket> basket= basketRepository.findForDeletePositionFromBasket(id,username);
        basketRepository.deleteAll(basket);
+       return HttpStatus.OK;
     }
 
-    public void minusOneBook(long id){
+    public HttpStatus minusOneBook(long id){
         Basket basket = basketRepository.findById(id).get();
-        if(basket.getCountOfTheBooks()>1){
+        if(basket.getBooksCount()>1){
             basketRepository.removeOneBook(id);
         }
         else{
             basketRepository.delete(basket);
         }
+        return HttpStatus.OK;
     }
 
-    public void addOneBook(long id){
+    public HttpStatus addOneBook(long id){
         basketRepository.addOneBook(id);
+        return HttpStatus.OK;
     }
 
-    public void buy(String name){
+    public HttpStatus buy(String name){
         List<Basket> list = basketRepository.getBasket(name);
         basketRepository.deleteAll(list);
+        return HttpStatus.OK;
     }
 
 }

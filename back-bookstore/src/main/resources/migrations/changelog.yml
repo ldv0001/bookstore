@@ -1,0 +1,171 @@
+databaseChangeLog:
+  - changeSet:
+      id: create_urs_table
+      author: ldv0001
+      comment: database usr creation
+      changes:
+        - createTable:
+            tableName: usr
+            columns:
+              - column:
+                  name: id
+                  type: int
+                  autoIncrement: true
+                  constraints:
+                    primaryKey: true
+                    primaryKeyName: urs_pkey
+                    nullable: false
+              - column:
+                  name: username
+                  type: varchar(255)
+              - column:
+                  name: password
+                  type: varchar(255)
+              - column:
+                  name: role
+                  type: varchar(255)
+  - changeSet:
+      id: insert_in_usr
+      author: ldv0001
+      comment: insert in usr
+      changes:
+        - insert:
+            tableName: usr
+            columns:
+              - column:
+                  name: username
+                  value: admin
+              - column:
+                  name: password
+                  value: root
+              - column:
+                  name: role
+                  value: ROLE_ADMIN
+  - changeSet:
+      id: create_author_table
+      author: ldv0001
+      comment: database author creation
+      changes:
+        - createTable:
+            tableName: author
+            columns:
+              - column:
+                  name: id
+                  type: bigint
+                  autoIncrement: true
+                  constraints:
+                    primaryKey: true
+                    primaryKeyName: author_pkey
+                    nullable: false
+              - column:
+                  name: name
+                  type: varchar(255)
+  - changeSet:
+      id: create_book_table
+      author: ldv0001
+      comment: database book creation
+      changes:
+        - createTable:
+            tableName: book
+            columns:
+              - column:
+                  name: id
+                  type: bigint
+                  autoIncrement: true
+                  constraints:
+                    primaryKey: true
+                    primaryKeyName: book_pkey
+                    nullable: false
+              - column:
+                  name: name_of_the_book
+                  type: varchar(255)
+              - column:
+                  name: image
+                  type: varchar(255)
+              - column:
+                  name: description
+                  type: text
+              - column:
+                  name: price
+                  type: real
+              - column:
+                  name: author_id
+                  type: bigint
+                  constraints:
+                    foreignKeyName: fk_book_author
+                    references: author(id)
+  - changeSet:
+      id: create_basket_table
+      author: ldv0001
+      comment: database basket creation
+      changes:
+        - createTable:
+            tableName: basket
+            columns:
+              - column:
+                  name: id
+                  type: bigint
+                  autoIncrement: true
+                  constraints:
+                    primaryKey: true
+                    primaryKeyName: basket_pkey
+                    nullable: false
+              - column:
+                  name: books_count
+                  type: int
+              - column:
+                  name: price
+                  type: real
+              - column:
+                  name: username
+                  type: varchar(255)
+              - column:
+                  name: book_id
+                  type: bigint
+                  constraints:
+                    foreignKeyName: fk_basket_book
+                    references: book(id)
+  - changeSet:
+      id: insert_in_author
+      author: ldv0001
+      comment: insert in author
+      changes:
+        - insert:
+            tableName: author
+            columns:
+              - column:
+                  name: name
+                  value: Herbert Schildt
+  - changeSet:
+      id: insert_in_book
+      author: ldv0001
+      comment: insert in book
+      changes:
+        - insert:
+            tableName: book
+            columns:
+              - column:
+                  name: name_of_the_book
+                  value: Herbert Schildt
+              - column:
+                  name: image
+                  value: java_schildt.jpg
+              - column:
+                  name: description
+                  value: >
+                    Fully updated for Java SE 9, Java: The Complete Reference,
+                    Tenth Edition explains how to develop, compile, debug, and run Java programs.
+                    Bestselling programming author Herb Schildt covers the entire Java language,
+                    including its syntax, keywords, and fundamental programming principles.
+                    You'll also find information on key portions of the Java API library, such as I/O,
+                    the Collections Framework, the stream library, and the concurrency utilities.
+                    Swing, JavaFX, JavaBeans, and servlets are examined and numerous examples demonstrate
+                    Java in action. Of course, the new module system added by Java SE 9 is discussed in
+                    detail. This Oracle Press resource also offers an introduction to JShell,
+                    Java’s new interactive programming tool.;
+              - column:
+                  name: price
+                  value: 65
+              - column:
+                  name: author_id
+                  value: 1

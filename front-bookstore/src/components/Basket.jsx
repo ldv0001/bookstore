@@ -32,7 +32,7 @@ const Basket = () => {
                 {resp.map(r=>
                     <BooksInBasket key = {r.id}
                                    id ={r.id}
-                                   count = {r.countOfTheBooks}
+                                   count = {r.booksCount}
                                    book ={r.book.nameOfTheBook}
                                    author ={r.book.author.name}
                                    price ={r.price}
@@ -40,7 +40,7 @@ const Basket = () => {
                 )}
                 <div  style={{color: "black", fontFamily: "Goudy Old Style"  }}>
                     <h1 align="right">Total price: {resp.reduce((x,y)=>
-                        (x+(y.price*y.countOfTheBooks)),0).toFixed(2)} </h1>
+                        (x+(y.price*y.booksCount)),0).toFixed(2)} </h1>
                 </div>
 
                 <button className='btn bg-secondary ml-auto m-2 text-white' onClick={buy}>Buy</button>

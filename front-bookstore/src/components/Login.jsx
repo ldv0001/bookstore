@@ -18,15 +18,15 @@ const Login = ()=>{
         axios({
             method: 'post',
             url: 'http://127.0.0.1:8080/login',
-            data: qs.stringify({
-                username: login,
-                password: password
-            }),
+            data: {
+                 username: login,
+                 password: password
+            },
             headers: {
-                'content-type': 'application/x-www-form-urlencoded;charset=utf-8'
+                'content-type': 'application/json'
             }
         }).then((headers) => {
-                // console.log(headers.data.access_token+"----------------");
+
                 localStorage.setItem('role',headers.data.role)
                 localStorage.setItem('user',headers.data.user)
                 localStorage.setItem('jwt',headers.data.access_token)
@@ -49,7 +49,6 @@ const Login = ()=>{
         <div className="login">
             {wrongPassword(isLogged)}
 
-            {/*<h2>{localStorage.getItem('role')}</h2>*/}
             <form >
                 <div className='col-5'>
                 <label htmlFor={login}>Login</label>
